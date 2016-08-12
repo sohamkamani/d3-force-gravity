@@ -1,0 +1,41 @@
+{
+  "name": "d3-force-gravity",
+  "version": "1.0.0",
+  "description": "My node module",
+  "main": "dist/index.js",
+  "scripts": {
+    "test": "parallelshell 'npm run mocha' 'npm run watch:eslint'",
+    "test:cover": "./node_modules/babel-cli/bin/babel-node.js ./node_modules/.bin/isparta cover ./node_modules/.bin/_mocha",
+    "test:coveralls": "cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js",
+    "watch:eslint" : "watch 'eslint source' source/",
+    "mocha": "mocha test --compilers js:babel-core/register --watch",
+    "ci": "npm run test:cover && npm run test:coveralls",
+    "relink": "npm unlink && npm link",
+    "build": "rm -rf dist/* && npm run copy:others && babel source --out-dir dist && npm run relink",
+    "copy:others": "rsync -avm --exclude='*.js' ./source/* ./dist"
+  },
+  "repository" : "sohamkamani/d3-force-gravity",
+  "author": {
+    "name": "sohamkamani",
+    "email": "sohamkamani@gmail.com"
+  },
+  "license": "ISC",
+  "devDependencies": {
+    "babel-cli": "^6.4.0",
+    "babel-core": "^6.4.0",
+    "babel-preset-es2015": "^6.1.18",
+    "chai": "^3.4.1",
+    "coveralls": "^2.11.6",
+    "isparta": "^4.0.0",
+    "mocha": "^2.3.4",
+    "watch": "^0.17.1",
+    "parallelshell": "^2.0.0"
+  },
+  "dependencies": {
+  },
+  "babel": {
+    "presets": [
+      "es2015"
+    ]
+  }
+}
