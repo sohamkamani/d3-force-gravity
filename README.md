@@ -22,6 +22,8 @@ If you want to use this directly on your browser, use the contents of `d3-force-
 
 ## Usage
 
+Check out the [d3-force](https://github.com/d3/d3-force/blob/master/README.md) docs for a general overview on how d3-force works.
+
 __Using npm :__
 
 ```js
