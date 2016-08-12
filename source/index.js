@@ -4,7 +4,7 @@ const assertNumber = (name, n) => {
 	}
 }
 
-const forceGravity = (x = 0, y = 0) => {
+const ForceGravity = (x = 0, y = 0) => {
 	let nodes,
 		acceleration,
 		strength = 10000,
@@ -43,6 +43,8 @@ const forceGravity = (x = 0, y = 0) => {
 		})
 		return force
 	}
+
+
 
 	force.strength = _strength => {
 		if (_strength === undefined) {
@@ -84,4 +86,4 @@ const forceGravity = (x = 0, y = 0) => {
 	return force
 }
 
-module.exports = forceGravity
+module.exports = ForceGravity
