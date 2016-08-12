@@ -5,3 +5,7 @@ coverage
 source
 test
 .nyc_output
+examples
+sample.gif
+d3-force-gravity.js
+d3-force-gravity.min.js

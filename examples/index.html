@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>React App</title>
+  </head>
+  <body>
+		<canvas width="400" height="400"></canvas>
+
+    
+    <script src="http://d3js.org/d3.v4.min.js"></script>
+		<script src="d3-force-gravity.min.js" type="text/javasript"></script>
+		<script type="text/javascript">
+		const canvas = document.querySelector('canvas')
+		const {width, height} = canvas
+
+		const nodes = d3.range(100).map(i => ({
+			index: i,
+			x: width / 2,
+			y: 0,
+			r: 5
+		}))
+
+		const context = canvas.getContext('2d')
+		const tau = 2 * Math.PI
+
+		const render = () => {
+			context.clearRect(0, 0, width, height)
+			context.save()
+
+			context.beginPath()
+			nodes.forEach(function(d) {
+				context.moveTo(d.x + d.r, d.y)
+				context.arc(d.x, d.y, d.r, 0, tau)
+			})
+			context.fillStyle = '#ddd'
+			context.fill()
+			context.strokeStyle = '#333'
+			context.stroke()
+
+			context.restore()
+		}
+
+		const simulation = d3.forceSimulation()
+			.nodes(nodes)
+			.force('g', d3.forceGravity(width / 2, height / 2).minRadius(40).strength(10000))
+			.force('collide', d3.forceCollide().radius(() => 7).iterations(2))
+			.alphaTarget(0.4)
+			.on('tick', render)
+
+		const dragsubject = () => simulation.find(d3.event.x, d3.event.y, 5)
+
+		d3.select(canvas)
+			.call(d3.drag()
+				.container(canvas)
+				.subject(dragsubject)
+				.on('start', dragstarted)
+				.on('drag', dragged)
+				.on('end', dragended))
+
+		function dragstarted() {
+			// if (!d3.event.active) simulation.alphaTarget(0.3).restart()
+			d3.event.subject.fx = d3.event.subject.x
+			d3.event.subject.fy = d3.event.subject.y
+		}
+
+		function dragged() {
+			d3.event.subject.fx = d3.event.x
+			d3.event.subject.fy = d3.event.y
+		}
+
+		function dragended() {
+			// if (!d3.event.active) simulation.alphaTarget(0)
+			d3.event.subject.fx = null
+			d3.event.subject.fy = null
+		}
+		</script>
+  </body>
+</html>
