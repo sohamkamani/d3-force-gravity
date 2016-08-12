@@ -1,6 +1,6 @@
 'use strict'
-import { assert, expect } from 'chai'
-import forceGravity from '../source/'
+const {assert, expect} = require('chai')
+const forceGravity = require('../source/')
 
 
 describe('Force Gravity', function() {
@@ -18,6 +18,26 @@ describe('Force Gravity', function() {
 		const force = forceGravity(10, 20)
 		expect(force.x()).to.equal(10)
 		expect(force.y()).to.equal(20)
+	})
+
+	describe('Core', function() {
+
+		it('modifies x and y position according to gravity physics', () => {
+			const force = forceGravity(100, 100)
+			const nodes = [{
+				x: 0,
+				y: 0,
+				vx: 0,
+				vy: 0
+			}]
+			force.initialize(nodes)
+			force()
+			expect(nodes[0].x).to.equal(0.35355339059327373)
+			expect(nodes[0].y).to.equal(0.35355339059327373)
+			force()
+			expect(nodes[0].x).to.equal(1.0594101717798212)
+			expect(nodes[0].y).to.equal(1.0594101717798212)
+		})
 	})
 
 	describe('strength', function() {
