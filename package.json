@@ -1,6 +1,6 @@
 {
   "name": "d3-force-gravity",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Implement gravitational attraction (or force-field-like repulsion) using d3-force",
   "main": "dist/index.js",
   "scripts": {
@@ -12,7 +12,8 @@
     "ci": "npm run test:cover && npm run test:coveralls",
     "relink": "npm unlink && npm link",
     "build": "rm -rf dist/* && npm run copy:others && babel source --out-dir dist",
-    "copy:others": "rsync -avm --exclude='*.js' ./source/* ./dist"
+    "copy:others": "rsync -avm --exclude='*.js' ./source/* ./dist",
+    "prepublish": "npm run build"
   },
   "repository": "sohamkamani/d3-force-gravity",
   "author": {
