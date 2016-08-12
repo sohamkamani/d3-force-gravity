@@ -1,7 +1,7 @@
 **To Contribute** :
 
 1. Clone the repo :  
-   `git clone https://github.com/sohamkamani/supercat.git`
+   `git clone `
 2. Install dependencies :  
    `npm install`
 3. Run tests :
