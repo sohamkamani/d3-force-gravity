@@ -4,6 +4,8 @@
 
 ![sample](sample.gif)
 
+Go [here](http://www.sohamkamani.com/d3-force-gravity__demo/) for a live demo and [here](https://github.com/sohamkamani/d3-force-gravity__demo/blob/master/src/index.js) for the code used in the demo
+
 ## Installation
 
 Using npm :
