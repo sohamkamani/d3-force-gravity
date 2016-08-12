@@ -15,6 +15,7 @@ module.exports = {
 	},
 	"plugins": [],
 	"rules": {
+		"no-console": 0,
 		"indent": [
 			"error",
 			"tab"
