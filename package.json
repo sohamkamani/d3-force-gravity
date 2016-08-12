@@ -1,6 +1,6 @@
 {
   "name": "d3-force-gravity",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Implement gravitational attraction (or force-field-like repulsion) using d3-force",
   "main": "dist/index.js",
   "scripts": {
